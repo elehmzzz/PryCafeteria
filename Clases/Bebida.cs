@@ -10,18 +10,44 @@ namespace PryCafeteria.Clases
     internal class Bebida
     {
         //atributos de mi clase
-        private string nombreBebida;
-        private string tamanio;
-        private float precio;
+        protected string nombreBebida;
+        protected string tamanio;
+        protected float precio;
 
-        //constructor de la clase bebida
+        //propiedades
+        public string _nombreBebida {
+            get {return nombreBebida;}
+            set { nombreBebida = value; }
+        }
+
+        public string _tamanio {
+            get { return tamanio; }
+            set { tamanio = value; }
+        }
+
+        public float _precio {
+            get { return precio; }
+            set { if (value>0) 
+                    precio = value;
+                }
+        }
+
+        //constructor vacio
+        public Bebida() {
+            nombreBebida = "";
+            tamanio = "";
+            precio = 0;
+        }
+
+        //constructor parametrizado
         public Bebida(string nombreBebida, string tamanio, float precio) {
             this.nombreBebida = nombreBebida;
             this.tamanio = tamanio;
             this.precio = precio;
         }
-        //comienzo de los metodos
-        public string preparar() {
+
+        //metodos
+        public virtual string preparar() {
             return $"Su {nombreBebida} de tamaño {tamanio} se esta preparando...";
         }
 
