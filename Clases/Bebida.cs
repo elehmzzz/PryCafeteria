@@ -56,8 +56,8 @@ namespace PryCafeteria.Clases
             precio = precio - descuento;
         }
 
-        public string mostrarDescripcion() {
+        /*public string mostrarDescripcion() {
             return $"Esto es un {nombreBebida} de tamaño {tamanio} con un costo de $ {precio}";
-        }
+        }*/
     }
 }

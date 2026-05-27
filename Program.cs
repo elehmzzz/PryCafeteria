@@ -7,25 +7,35 @@ namespace PryCafeteria
         static void Main(string[] args)
         {
 
-            for (int x = 0; x < 3; x++)
+            float costoTotal = 0;
+
+            Bebida[] pedidos = new Bebida[] {
+                new BebidaCaliente("Café con leche","grande",90,89),
+                new BebidaFria("Frape chocolate","pequeño", 80, 2),
+                new BebidaFria("Frapuchino", "grande",80,3),
+                new BebidaCaliente("Expreso","pequeño",70,80),
+                new BebidaCaliente("Té de canela","chico",60,89 )
+            };
+
+            for (int x = 0; x < pedidos.Length; x++)
             {
+                Bebida bebida = pedidos[x];
 
-                Console.WriteLine("ingresa el nombre de la bebida: ");
-                string nombreBebida = Console.ReadLine();
-                Console.WriteLine("ingresa el tamaño de la bebida: ");
-                string tamanio = Console.ReadLine();
-                Console.WriteLine("ingresa el precio de la bebida: ");
-                float precio = float.Parse(Console.ReadLine());
-                Console.WriteLine("Ingresa el porcentaje de descuento si aplica:");
-                float porcentaje = float.Parse(Console.ReadLine());
+                if (bebida is BebidaCaliente caliente)
+                {
+                    if (caliente._temperatura > 88)
+                        Console.WriteLine("[!] ADVERTENCIA: ¡Cuidado, bebida muy caliente!");
+                    Console.WriteLine(pedidos[x].preparar() + "\n");
+                }
+                else {
+                    Console.WriteLine(pedidos[x].preparar() + "\n");
+                }
 
-                Bebida bebida1 = new Bebida(nombreBebida, tamanio, precio);
-
-                bebida1.aplicarDescuento(porcentaje);
-                Console.WriteLine("\n"+bebida1.preparar());
-                Console.WriteLine(bebida1.mostrarDescripcion()+"\n");
-
+                costoTotal = costoTotal + pedidos[x]._precio;
+                
             }
+
+            Console.WriteLine($"\nEl costo total de los pedidos es: ${costoTotal}");
 
         }
     }
