@@ -22,13 +22,13 @@ namespace PryCafeteria.Clases
         //constructor parametrizado
         public BebidaFria( string nombreBebida, string tamanio, float precio, int cantHielo): base(nombreBebida, tamanio, precio)
         {
-            cantHielo = 0;
+            this.cantHielo = cantHielo;
         }
 
         //metodo sobreescrito (Polimorfismo)
         public override string preparar()
         {
-            return "Preparando un: " + nombreBebida + "Fria de tamaño: " + tamanio;
+            return $"Preparando un:{ nombreBebida} Fria con {cantHielo} cubos de hielo de tamaño: {tamanio}";
         }
 
     }
